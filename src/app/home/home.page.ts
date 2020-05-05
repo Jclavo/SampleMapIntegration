@@ -29,12 +29,16 @@ export class HomePage {
     // this.mapa.marker = '<p style="color:green;"><b>Salão Metropolitano</b></p>';
     this.mapa.marker = 'Salão Metropolitano';
 
+    //set options
+    // this.mapa.options
+
     let params = new HttpParams()
     .set("latitude", this.mapa.latitude)
     .set("longitude", this.mapa.longitude)
     .set("marker", this.mapa.marker)
     .set("massive", "")
     .set("coordenatesList", "")
+    .set("options", JSON.stringify(this.mapa.options) )
 
     this.mapURL = this.mapService.getMapaURL(params);
 
