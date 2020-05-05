@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-import { HttpParams, HttpClient } from '@angular/common/http';
+import { HttpParams } from '@angular/common/http';
 
 //SERVICE
 import { MapService } from '../services/map.service';
 
 //MODELS
-import { Mapa } from '../models/map'
+import { Map } from '../models/map';
+import { Value } from '../models/value';
+
 
 @Component({
   selector: 'app-home',
@@ -14,31 +16,64 @@ import { Mapa } from '../models/map'
 })
 export class HomePage {
 
-  public mapa = new Mapa();
-  public mapas: Array<Mapa> = [];
+  public map = new Map();
+
+  //Values for options
+  public layers: Array<Value> = [];
+  public shapes: Array<Value> = [];
+  public shapeColors: Array<Value> = [];
 
   public mapURL: any = this.mapService.getMapaUrlRandom();
 
-  constructor(private mapService: MapService,
-    private http: HttpClient,) {}
+  constructor(private mapService: MapService) {
+
+    this.loadLayers();
+    this.loadShapes();
+    this.loadShapeColors();
+
+  }
+
+  loadLayers() {
+    this.layers.push(new Value(1, 'MapBox'));
+    this.layers.push(new Value(2, 'EduPala'));
+    this.layers.push(new Value(3, 'OpenStreet'));
+    this.layers.push(new Value(4, 'ArcGis'));
+  }
+
+  loadShapes() {
+    this.shapes.push(new Value(1, 'Point'));
+    this.shapes.push(new Value(2, 'Polyline'));
+    this.shapes.push(new Value(3, 'Polygon'));
+    this.shapes.push(new Value(4, 'Rectangle'));
+    this.shapes.push(new Value(5, 'Circle'));
+  }
+
+  loadShapeColors() {
+    this.shapeColors.push(new Value(1, 'red'));
+    this.shapeColors.push(new Value(2, 'blue'));
+    this.shapeColors.push(new Value(3, 'green'));
+    this.shapeColors.push(new Value(4, 'yellow'));
+    this.shapeColors.push(new Value(5, 'black'));
+  }
+
+
+  onSelectLayer() {
+    console.log('this.map.options.layer ', this.map.options.layer);
+  }
 
   testOneValue() {
 
-    this.mapa.latitude = "-15.795650";
-    this.mapa.longitude = "-47.878197";
-    // this.mapa.marker = '<p style="color:green;"><b>Salão Metropolitano</b></p>';
-    this.mapa.marker = 'Salão Metropolitano';
-
-    //set options
-    // this.mapa.options
+    this.map.latitude = "-15.795650";
+    this.map.longitude = "-47.878197";
+    this.map.marker = 'Salão Metropolitano';
 
     let params = new HttpParams()
-    .set("latitude", this.mapa.latitude)
-    .set("longitude", this.mapa.longitude)
-    .set("marker", this.mapa.marker)
-    .set("massive", "")
-    .set("coordenatesList", "")
-    .set("options", JSON.stringify(this.mapa.options) )
+      .set("latitude", this.map.latitude)
+      .set("longitude", this.map.longitude)
+      .set("marker", this.map.marker)
+      .set("massive", "")
+      .set("coordenatesList", "")
+      .set("options", JSON.stringify(this.map.options))
 
     this.mapURL = this.mapService.getMapaURL(params);
 
@@ -51,10 +86,12 @@ export class HomePage {
     coordenates.push({ "latitude": "-15.795650", "longitude": "-47.878197", "marker": 'Museu do canção', "color": 'RED' });
     coordenates.push({ "latitude": "-15.798153", "longitude": "-47.875527", "marker": 'Cat&#201dral Metropolitana', "color": 'GREEN' });
     coordenates.push({ "latitude": "-15.799407", "longitude": "-47.864152", "marker": 'Congresso Nacional', "color": 'BLUE' });
+    coordenates.push({ "latitude": "-15.783896", "longitude": "-47.913365", "marker": 'Memorial JK', "color": 'RED' });
+    coordenates.push({ "latitude": "-15.799887", "longitude": "-47.907853", "marker": 'Parque da cidade', "color": 'BLUE' });
+    coordenates.push({ "latitude": "-15.790241", "longitude": "-47.892789", "marker": 'Torre de TV', "color": 'GREEN' });
 
     let token = await this.mapService.getToken();
 
-    
 
     for (let index = 0; index < coordenates.length; index++) {
 
@@ -62,8 +99,7 @@ export class HomePage {
         'token': token,
         'latitude': coordenates[index].latitude,
         'longitude': coordenates[index].longitude,
-         'marker': coordenates[index].marker,
-        // 'marker': btoa(coordenates[index].marker),
+        'marker': coordenates[index].marker,
         'color': coordenates[index].color,
 
       }
@@ -71,7 +107,8 @@ export class HomePage {
     }
 
     let params = new HttpParams()
-    .set("token", token)
+      .set("token", token)
+      .set("options", JSON.stringify(this.map.options))
 
     this.mapURL = this.mapService.getMapaURLMassive(params);
   }
@@ -82,7 +119,6 @@ export class HomePage {
     coordenates.push({ "latitude": "-15.795650", "longitude": "-47.878197", "marker": '<p style="color:red;"><b>Museu Nacional</b></p>', "color": 'RED' });
     coordenates.push({ "latitude": "-15.798153", "longitude": "-47.875527", "marker": '<p style="color:green;"><b>Salão Metropolitano</b></p>', "color": 'GREEN' });
     coordenates.push({ "latitude": "-15.799407", "longitude": "-47.864152", "marker": '<p style="color:blue;"><b>Congresso Nacional</b></p>', "color": 'BLUE' });
-
 
     let token = await this.mapService.getToken();
 
@@ -100,7 +136,44 @@ export class HomePage {
     }
 
     let params = new HttpParams()
-    .set("token", token);
+      .set("token", token)
+      .set("options", JSON.stringify(this.map.options))
+
+    this.mapURL = this.mapService.getMapaURLMassive(params);
+  }
+
+  async testMassiveValuesSpecificMarkets() {
+
+    let coordenates: Array<any> = [];
+
+    coordenates.push({ "latitude": "-15.795650", "longitude": "-47.878197", "marker": 'Museu do canção', "color": 'RED' });
+    coordenates.push({ "latitude": "-15.798153", "longitude": "-47.875527", "marker": 'Cat&#201dral Metropolitana', "color": 'GREEN' });
+    coordenates.push({ "latitude": "-15.799407", "longitude": "-47.864152", "marker": 'Congresso Nacional', "color": 'BLUE' });
+    coordenates.push({ "latitude": "-15.783896", "longitude": "-47.913365", "marker": 'Memorial JK', "color": 'RED' });
+    coordenates.push({ "latitude": "-15.799887", "longitude": "-47.907853", "marker": 'Parque da cidade', "color": 'BLUE' });
+    coordenates.push({ "latitude": "-15.790241", "longitude": "-47.892789", "marker": 'Torre de TV', "color": 'GREEN' });
+
+    let token = await this.mapService.getToken();
+
+
+    for (let index = 0; index < coordenates.length; index++) {
+
+      let params = {
+        'token': token,
+        'latitude': coordenates[index].latitude,
+        'longitude': coordenates[index].longitude,
+        'marker': coordenates[index].marker,
+        'color': coordenates[index].color,
+
+      }
+      await this.mapService.setCoordenates(params);
+    }
+
+    this.map.options.showSpecificMarkerts = [0,5];
+    
+    let params = new HttpParams()
+      .set("token", token)
+      .set("options", JSON.stringify(this.map.options))
 
     this.mapURL = this.mapService.getMapaURLMassive(params);
   }
