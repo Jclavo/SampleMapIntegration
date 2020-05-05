@@ -7,5 +7,13 @@ export class Mapa {
     massive: string = ""; 
     coordenatesList: string = "";
     
-    token: any;
+    token: string;
+    options = new Option();
+}
+
+class Option{
+    layer: number = 1
+    shape: number = 1
+    hideMarkets: boolean = false;
+    showSpecificMarkerts: Array<any> = [];
 }
