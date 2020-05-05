@@ -1,4 +1,4 @@
-export class Mapa {
+export class Map {
     latitude: string;
     longitude: string;
     marker: string;
@@ -14,6 +14,8 @@ export class Mapa {
 class Option{
     layer: number = 1
     shape: number = 1
+    shapeColor: string = 'red'
     hideMarkets: boolean = false;
     showSpecificMarkerts: Array<any> = [];
+    // showSpecificMarkerts: Array<any> = [0,5];
 }

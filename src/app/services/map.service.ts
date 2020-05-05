@@ -5,8 +5,6 @@ import { HttpParams, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, catchError } from "rxjs/operators";
 
-//MODELS
-import { Mapa } from '../models/map'
 //SERVICE
 import { environment } from "../../environments/environment";
 
