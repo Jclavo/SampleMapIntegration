@@ -1,6 +1,7 @@
 {
-  "name": "SampleMapIntegration",
-  "version": "1.0.0",
+  "name": "sample-map-integration",
+  "version": "2.0.0",
+  "description": "This project show how to implement a Map and its feature consuming those from a service",
   "author": "Jclavo",
   "homepage": "https://Jclavo.github.io/SampleMapIntegration/",
   "scripts": {
@@ -51,6 +52,5 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
     "typescript": "~3.4.3"
-  },
-  "description": "An Ionic project"
+  }
 }
