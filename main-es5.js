@@ -72,8 +72,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       "./ion-fab_3-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-fab_3-ios.entry.js", "common", 23],
       "./ion-fab_3-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-fab_3-md.entry.js", "common", 24],
       "./ion-img.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-img.entry.js", 25],
-      "./ion-infinite-scroll_2-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-infinite-scroll_2-ios.entry.js", "common", 26],
-      "./ion-infinite-scroll_2-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-infinite-scroll_2-md.entry.js", "common", 27],
+      "./ion-infinite-scroll_2-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-infinite-scroll_2-ios.entry.js", 26],
+      "./ion-infinite-scroll_2-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-infinite-scroll_2-md.entry.js", 27],
       "./ion-input-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-input-ios.entry.js", "common", 28],
       "./ion-input-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-input-md.entry.js", "common", 29],
       "./ion-item-option_3-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-item-option_3-ios.entry.js", "common", 30],
@@ -166,7 +166,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-app>\n  <ion-router-outlet></ion-router-outlet>\n</ion-app>\n";
+    __webpack_exports__["default"] = "<ion-app>\r\n  <ion-router-outlet></ion-router-outlet>\r\n</ion-app>\r\n";
     /***/
   },
 
@@ -176,7 +176,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     !*** ./node_modules/tslib/tslib.es6.js ***!
     \*****************************************/
 
-  /*! exports provided: __extends, __assign, __rest, __decorate, __param, __metadata, __awaiter, __generator, __exportStar, __values, __read, __spread, __spreadArrays, __await, __asyncGenerator, __asyncDelegator, __asyncValues, __makeTemplateObject, __importStar, __importDefault, __classPrivateFieldGet, __classPrivateFieldSet */
+  /*! exports provided: __extends, __assign, __rest, __decorate, __param, __metadata, __awaiter, __generator, __createBinding, __exportStar, __values, __read, __spread, __spreadArrays, __await, __asyncGenerator, __asyncDelegator, __asyncValues, __makeTemplateObject, __importStar, __importDefault, __classPrivateFieldGet, __classPrivateFieldSet */
 
   /***/
   function node_modulesTslibTslibEs6Js(module, __webpack_exports__, __webpack_require__) {
@@ -230,6 +230,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     __webpack_require__.d(__webpack_exports__, "__generator", function () {
       return __generator;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "__createBinding", function () {
+      return __createBinding;
     });
     /* harmony export (binding) */
 
@@ -316,18 +322,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return __classPrivateFieldSet;
     });
     /*! *****************************************************************************
-    Copyright (c) Microsoft Corporation. All rights reserved.
-    Licensed under the Apache License, Version 2.0 (the "License"); you may not use
-    this file except in compliance with the License. You may obtain a copy of the
-    License at http://www.apache.org/licenses/LICENSE-2.0
+    Copyright (c) Microsoft Corporation.
     
-    THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-    KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
-    WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
-    MERCHANTABLITY OR NON-INFRINGEMENT.
+    Permission to use, copy, modify, and/or distribute this software for any
+    purpose with or without fee is hereby granted.
     
-    See the Apache Version 2.0 License for specific language governing permissions
-    and limitations under the License.
+    THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+    REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+    AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+    INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+    LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+    OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+    PERFORMANCE OF THIS SOFTWARE.
     ***************************************************************************** */
 
     /* global Reflect, Promise */
@@ -549,9 +555,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
     }
 
+    function __createBinding(o, m, k, k2) {
+      if (k2 === undefined) k2 = k;
+      o[k2] = m[k];
+    }
+
     function __exportStar(m, exports) {
       for (var p in m) {
-        if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+        if (p !== "default" && !exports.hasOwnProperty(p)) exports[p] = m[p];
       }
     }
 
@@ -733,13 +744,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       if (mod != null) for (var k in mod) {
         if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
       }
-      result.default = mod;
+      result["default"] = mod;
       return result;
     }
 
     function __importDefault(mod) {
       return mod && mod.__esModule ? mod : {
-        default: mod
+        "default": mod
       };
     }
 
@@ -941,10 +952,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       selector: 'app-root',
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! raw-loader!./app.component.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/app.component.html")).default,
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/app.component.html"))["default"],
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./app.component.scss */
-      "./src/app/app.component.scss")).default]
+      "./src/app/app.component.scss"))["default"]]
     }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"], _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"]])], AppComponent);
     /***/
   },
@@ -1140,7 +1151,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["enableProdMode"])();
     }
 
-    Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformBrowserDynamic"])().bootstrapModule(_app_app_module__WEBPACK_IMPORTED_MODULE_3__["AppModule"]).catch(function (err) {
+    Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformBrowserDynamic"])().bootstrapModule(_app_app_module__WEBPACK_IMPORTED_MODULE_3__["AppModule"])["catch"](function (err) {
       return console.log(err);
     });
     /***/
@@ -1157,7 +1168,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   /***/
   function _(module, exports, __webpack_require__) {
     module.exports = __webpack_require__(
-    /*! /home/jclavo/ionic-workspace/SampleMapIntegration/src/main.ts */
+    /*! C:\Users\Level\Documents\AngularWorkspace\SampleMapIntegration\src\main.ts */
     "./src/main.ts");
     /***/
   }
