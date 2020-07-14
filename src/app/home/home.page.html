@@ -18,12 +18,56 @@
       <ion-button expand="full" color="dark" (click)="testOneValue()">1 Markert</ion-button>
     </ion-col>
     <ion-col col-6>
-      <ion-button expand="full" id="salvarSalir" color="danger" (click)="testMassiveValues()">Many Markets</ion-button>
+      <ion-button expand="full" color="danger" (click)="testMassiveValues()">Many Markets</ion-button>
     </ion-col>
     <ion-col col-6>
-      <ion-button expand="full" id="salvarSalir" color="success" (click)="testCustomMarkert()">Custom Markets
+      <ion-button expand="full" color="success" (click)="testCustomMarkert()">Custom Markets
       </ion-button>
     </ion-col>
+    <ion-col col-6>
+      <ion-button expand="full" color="danger" (click)="testMassiveValuesSpecificMarkets()">Shape with specific Markets</ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row text-center>
+    <ion-col col-3>
+      <ion-item>
+        <ion-label>Layer</ion-label>
+        <ion-select [(ngModel)]="map.options.layer" interface="popover" name="layer" placeholder="Select a layer"
+          (ionChange)="onSelectLayer()">
+          <ion-select-option *ngFor="let layer of layers" value="{{layer.id}}">
+            {{layer.name}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+    <ion-col col-3>
+      <ion-item>
+        <ion-label>Shape</ion-label>
+        <ion-select [(ngModel)]="map.options.shape" interface="popover" name="shape" placeholder="Select a shape">
+          <ion-select-option *ngFor="let shape of shapes" value="{{shape.id}}">
+            {{shape.name}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+    <ion-col col-3>
+      <ion-item>
+        <ion-label>Shape Color</ion-label>
+        <ion-select [(ngModel)]="map.options.shapeColor" interface="popover" name="shapeColor"
+          placeholder="Select a color for the shape">
+          <ion-select-option *ngFor="let shapeColor of shapeColors" value="{{shapeColor.name}}">
+            {{shapeColor.name}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+    <ion-col col-3>
+      <ion-item>
+        <ion-label>Hide markerts</ion-label>
+        <ion-checkbox slot="end" [(ngModel)]="map.options.hideMarkets"></ion-checkbox>
+      </ion-item>
+    </ion-col>
+
   </ion-row>
 
   <iframe [src]="mapURL" width="100%" height="100%" scrolling="no" frameborder="0"></iframe>
