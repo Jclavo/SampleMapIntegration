@@ -178,4 +178,43 @@ export class HomePage {
     this.mapURL = this.mapService.getMapaURLMassive(params);
   }
 
+  /**
+   * 
+   * web to check area: https://www.daftlogic.com/projects-google-maps-area-calculator-tool.htm#
+   */
+
+  async testMapArea() {
+
+    let coordenates: Array<any> = [];
+    
+    coordenates.push({ "latitude": "-15.747309", "longitude": "-47.885165", "marker": 'P4' });
+    coordenates.push({ "latitude": "-15.746545", "longitude": "-47.882386", "marker": 'P3'});
+    coordenates.push({ "latitude": "-15.740432", "longitude": "-47.884371", "marker": 'P2' });
+    coordenates.push({ "latitude": "-15.741279", "longitude": "-47.887107", "marker": 'P1' });
+
+    let token = await this.mapService.getToken();
+
+
+    for (let index = 0; index < coordenates.length; index++) {
+
+      let params = {
+        'token': token,
+        'latitude': coordenates[index].latitude,
+        'longitude': coordenates[index].longitude,
+        'marker': coordenates[index].marker,
+        'color': coordenates[index].color,
+
+      }
+      await this.mapService.setCoordenates(params);
+    }
+
+    this.map.options.shape = 3; //This is a Polygon shape, because to check it you need more than 2 points
+    this.map.options.showArea = true;
+
+    let params = new HttpParams()
+      .set("token", token)
+      .set("options", JSON.stringify(this.map.options))
+
+    this.mapURL = this.mapService.getMapaURLMassive(params);
+  }
 }

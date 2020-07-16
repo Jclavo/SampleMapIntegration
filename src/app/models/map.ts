@@ -17,5 +17,6 @@ class Option{
     shapeColor: string = 'red'
     hideMarkets: boolean = false;
     showSpecificMarkerts: Array<any> = [];
+    showArea: boolean = false;
     // showSpecificMarkerts: Array<any> = [0,5];
 }
